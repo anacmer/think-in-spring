@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--静态方法构造-->
+    <bean id="userCreateByStaticMethod" class="com.anacmer.learn.spring.pojo.User" factory-method="createUer"/>
+    <!--实例方法构建-->
+    <bean id="userCreateByInstanceMethod" class="com.anacmer.learn.spring.pojo.User" factory-bean="userFactory"/>
+    <!--factory bean 构建方式-->
+    <bean id="userCreateByFactoryBean" class="com.anacmer.learn.spring.bean.factory.UserFactoryBean"/>
+    <!--user factory 构建方式-->
+    <bean id="userFactory" class="com.anacmer.learn.spring.bean.factory.DefaultUserFactory"/>
+
+    <bean id="userFactoryServiceLoader"
+          class="org.springframework.beans.factory.serviceloader.ServiceLoaderFactoryBean">
+        <property name="serviceType" value="com.anacmer.learn.spring.bean.factory.UserFactory"/>
+    </bean>
+</beans>
