@@ -11,4 +11,5 @@ public interface UserFactory {
     default User createUser() {
         return User.createUer();
     }
+    void initUserFactory();
 }
