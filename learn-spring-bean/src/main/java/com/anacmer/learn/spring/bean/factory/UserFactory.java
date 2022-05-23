@@ -8,5 +8,7 @@ import com.anacmer.learn.spring.pojo.User;
  */
 public interface UserFactory {
 
-    User createUser();
+    default User createUser() {
+        return User.createUer();
+    }
 }
