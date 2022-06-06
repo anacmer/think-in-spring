@@ -26,6 +26,8 @@ public class BeanInitializationDemo {
             // 非延迟初始化,在 Spring 应用上下文启动完成时,被初始化
             UserFactory userFactory = applicationContext.getBean(UserFactory.class);
             System.out.println(userFactory.createUser());
+            applicationContext.close();
+            System.out.println("Spring 应用上下文已关闭...");
         }
     }
 
@@ -37,7 +39,7 @@ public class BeanInitializationDemo {
      * @return UserFactory
      */
     @Lazy// 不推荐: @Lazy(value = false) 如果不需要延迟初始化,可以直接不加@Lazy注解
-    @Bean(initMethod = "initUserFactory")
+    @Bean(initMethod = "initUserFactory", destroyMethod = "doDestroy")
     public UserFactory userFactory() {
         return new DefaultUserFactory();
     }

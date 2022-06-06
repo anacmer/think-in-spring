@@ -12,4 +12,6 @@ public interface UserFactory {
         return User.createUer();
     }
     void initUserFactory();
+
+    void doDestroy();
 }
